@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BookShelf from './BookShelf';
+import { Link } from 'react-router-dom';
 import * as BooksAPI from '../BooksAPI';
 
 import "./App.css";
@@ -55,19 +55,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-            <div>
-              <ListBookShelves books={books} onBookUpdateShelf={ (book, shelf) => updateShelf(book, shelf) } />
-            </div>
-          </div>
-          <div className="open-search">
-            <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
-          </div>
-        </div>
+          <ListBookShelves books={books} onBookUpdateShelf={ (book, shelf) => updateShelf(book, shelf) } />
       )}
     </div>
   );
