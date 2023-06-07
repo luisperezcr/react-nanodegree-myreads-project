@@ -3,7 +3,6 @@ import Book from './Book';
 import { useState, useEffect } from 'react';
 import * as BooksAPI from '../BooksAPI';
 import PropTypes from 'prop-types';
-import book from './Book';
 
 const Search = ({ onBookUpdateShelf }) => {
     const navigate = useNavigate();
