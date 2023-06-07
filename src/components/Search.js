@@ -14,7 +14,7 @@ const Search = ({ onBookUpdateShelf }) => {
         const debounce = setTimeout(() => {
             if (query) {
                 const searchBooks = async () => {
-                    const books = await BooksAPI.search(query, 1000);
+                    const books = await BooksAPI.search(query, 20);
                     setBooks((books && books.length) ? books : []);
                 };
 
