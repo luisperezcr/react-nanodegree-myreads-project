@@ -17,7 +17,6 @@ const Search = ({ onBookUpdateShelf }) => {
                 const searchBooks = async () => {
                     const books = await BooksAPI.search(query, 1000);
                     setBooks((books && books.length) ? books : []);
-                    console.log('Books', books);
                 };
 
                 void searchBooks();
