@@ -3,6 +3,7 @@ import Book from './Book';
 import { useState, useEffect } from 'react';
 import * as BooksAPI from '../BooksAPI';
 import PropTypes from 'prop-types';
+import book from './Book';
 
 const Search = ({ onBookUpdateShelf }) => {
     const navigate = useNavigate();
@@ -54,17 +55,29 @@ const Search = ({ onBookUpdateShelf }) => {
                     />
                 </div>
             </div>
-            <div className="search-books-results">
-                <ol className="books-grid">
-                    { books.map((book) => (
-                        <Book
-                            key={book.id}
-                            book={book}
-                            onShelfChange={(book, shelf) => onUpdateShelf(book, shelf)}
-                        />
-                    )) }
-                </ol>
-            </div>
+            {
+                books.length === 0 && (
+                    <div className="search-books-results no-results">
+                        <span>No books found.</span>
+                        <button onClick={goToList}>Go back</button>
+                    </div>
+                )
+            }
+            {
+                books.length > 0 && (
+                    <div className="search-books-results">
+                        <ol className="books-grid">
+                            { books.map((book) => (
+                                <Book
+                                    key={book.id}
+                                    book={book}
+                                    onShelfChange={(book, shelf) => onUpdateShelf(book, shelf)}
+                                />
+                            )) }
+                        </ol>
+                    </div>
+                )
+            }
         </div>
     );
 };

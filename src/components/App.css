@@ -107,6 +107,19 @@ body,
   padding: 80px 10px 20px;
 }
 
+.search-books-results.no-results {
+  text-align: center;
+}
+
+.search-books-results.no-results button {
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: #069;
+  cursor: pointer;
+  font-size: 1em;
+}
+
 /* books grid */
 
 .books-grid {
