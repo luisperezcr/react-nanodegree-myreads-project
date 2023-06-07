@@ -3,6 +3,7 @@ import BookShelf from './BookShelf';
 import * as BooksAPI from '../BooksAPI';
 
 import "./App.css";
+import ListBookShelves from './ListBookShelves';
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
@@ -60,21 +61,7 @@ function App() {
           </div>
           <div className="list-books-content">
             <div>
-              <BookShelf
-                  title="Currently Reading"
-                  books={ books.filter((book) => book.shelf === 'currentlyReading') }
-                  onUpdateShelf={ (book, shelf) => updateShelf(book, shelf) }
-              />
-              <BookShelf
-                  title="Want to Read"
-                  books={ books.filter((book) => book.shelf === 'wantToRead') }
-                  onUpdateShelf={ (book, shelf) => updateShelf(book, shelf) }
-              />
-              <BookShelf
-                  title="Read"
-                  books={ books.filter((book) => book.shelf === 'read') }
-                  onUpdateShelf={ (book, shelf) => updateShelf(book, shelf) }
-              />
+              <ListBookShelves books={books} onBookUpdateShelf={ (book, shelf) => updateShelf(book, shelf) } />
             </div>
           </div>
           <div className="open-search">

@@ -1,11 +1,4 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-
-const options = [
-    { value: 'currentlyReading', label: 'Currently Reading' },
-    { value: 'wantToRead', label: 'Want To Read' },
-    { value: 'read', label: 'Read' }
-];
 
 const Book = ({ book, onShelfChange }) => {
     return (
