@@ -33,7 +33,7 @@ const Book = ({ book, onShelfChange }) => {
                             ></div>
                             <div className="book-shelf-changer">
                                 <select defaultValue={bookData.shelf} onChange={(e) => onShelfChange(bookData, e.target.value)}>
-                                    <option value="none" disabled>
+                                    <option value="moveTo" disabled>
                                         Move to...
                                     </option>
                                     <option value="currentlyReading">Currently Reading</option>
