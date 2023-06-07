@@ -18,6 +18,7 @@ const ListBookShelves = ({ books, onBookUpdateShelf }) => {
                 <div>
                     { bookShelves.map((shelf) => (
                         <BookShelf
+                            key={shelf.value}
                             title={shelf.title}
                             books={ books.filter((book) => book.shelf === shelf.value) }
                             onUpdateShelf={(book, shelf) => onBookUpdateShelf(book, shelf)}
@@ -33,7 +34,7 @@ const ListBookShelves = ({ books, onBookUpdateShelf }) => {
 };
 
 ListBookShelves.propTypes = {
-    books: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired,
     onBookUpdateShelf: PropTypes.func.isRequired
 };
 

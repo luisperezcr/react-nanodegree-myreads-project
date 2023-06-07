@@ -22,12 +22,8 @@ function App() {
         void BooksAPI.update(book, shelf);
 
         // Update UI without making another request to BE
-        const updatedBooks = books.map((b) => {
-            if (b.id === book.id) {
-                b.shelf = shelf;
-            }
-            return b;
-        });
+        const updatedBooks = books.filter((b) => b.id !== book.id);
+        updatedBooks.push({ ...book, shelf });
         setBooks(updatedBooks);
     };
 
@@ -46,7 +42,7 @@ function App() {
             <Route
                 path="/search"
                 element={
-                    <Search/>
+                    <Search onBookUpdateShelf={(book, shelf) => updateShelf(book, shelf)} />
                 }
             />
         </Routes>
