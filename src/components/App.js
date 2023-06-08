@@ -34,14 +34,14 @@ function App() {
                 element={
                     <ListBookShelves
                         books={books}
-                        onBookUpdateShelf={(book, shelf) => updateShelf(book, shelf)}
+                        onBookUpdateShelf={updateShelf}
                     />
                 }
             />
             <Route
                 path="/search"
                 element={
-                    <Search onBookUpdateShelf={(book, shelf) => updateShelf(book, shelf)} />
+                    <Search onBookUpdateShelf={updateShelf} />
                 }
             />
         </Routes>
