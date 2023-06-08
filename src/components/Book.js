@@ -1,20 +1,26 @@
 import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
-import { useState } from 'react';
+import { useState, memo, useEffect } from 'react';
 
 const Book = ({ book, onShelfChange }) => {
     const [bookData, setBookData] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
-    if (!bookData) {
-        const getBook = async() => {
-            const b = await BooksAPI.get(book.id);
-            setBookData(b);
-            setIsLoading(false);
-        };
+    useEffect(() => {
+        const debounce = setTimeout(() => {
+            const getBook = async() => {
+                const b = await BooksAPI.get(book.id);
+                setBookData(b);
+                setIsLoading(false);
+            };
 
-        void getBook();
-    }
+            void getBook();
+        }, 100);
+
+        return () => {
+            clearTimeout(debounce);
+        };
+    }, [book]);
 
     return (
         <li>
@@ -57,4 +63,4 @@ Book.propTypes = {
     onShelfChange: PropTypes.func.isRequired
 };
 
-export default Book;
+export default memo(Book);

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Book from './Book';
 import { useState, useEffect } from 'react';
 import * as BooksAPI from '../BooksAPI';
@@ -37,13 +37,12 @@ const Search = ({ onBookUpdateShelf }) => {
         setQuery('');
         setBooks([]);
         navigate('/');
-
     };
 
     return (
         <div className="search-books">
             <div className="search-books-bar">
-                <a className="close-search" onClick={goToList}>Close</a>
+                <Link className="close-search" to="/">Close</Link>
                 <div className="search-books-input-wrapper">
                     <input
                         type="text"
